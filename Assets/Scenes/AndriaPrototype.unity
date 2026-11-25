@@ -385,6 +385,8 @@ MonoBehaviour:
   distance: 3.5
   height: 1
   mouseSensitivity: 0.2
+  cameraRadius: 0.3
+  wallPadding: 0.15
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,6 +1267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GravityController
   rotationAmount: 90
   rotationDuration: 0.6
+  player: {fileID: 1965507334}
 --- !u!4 &1242685330
 Transform:
   m_ObjectHideFlags: 0
