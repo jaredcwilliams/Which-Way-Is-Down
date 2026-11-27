@@ -25,10 +25,12 @@ public class GravityController : MonoBehaviour
 
     public void RotateRoom()
     {
-        if (!isRotating && player != null)
-        {
-            StartCoroutine(RotateRoomSmoothly());
-        }
+        if (isRotating || player == null) return;
+
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        if (playerController != null && !playerController.CanSwitchGravity) return;
+
+        StartCoroutine(RotateRoomSmoothly());
     }
 
     private IEnumerator RotateRoomSmoothly()
@@ -39,6 +41,9 @@ public class GravityController : MonoBehaviour
             player.GetComponent<CharacterController>();
         PlayerController playerController =
             player.GetComponent<PlayerController>();
+
+        if (playerController != null)
+            playerController.BeginGravitySwitch();
 
         bool movementWasEnabled =
             playerController != null && playerController.enabled;
